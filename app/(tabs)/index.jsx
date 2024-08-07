@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Text, View, StyleSheet, TextInput} from 'react-native'
-import { LinearGradient } 'expo-linear-gradient'
+import { LinearGradient } from 'expo-linear-gradient'
 
 const style = StyleSheet.create({
     container:{
