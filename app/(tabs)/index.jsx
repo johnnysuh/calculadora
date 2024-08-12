@@ -42,10 +42,10 @@ const PrimeiraPagina = function () {
         <TextInput style={styles.input}keyboardType='numeric' placeholder='Valor 2' value={number2} onChangeText={setNumber2} />
       </View>
       <View style={styles.buttonGroup}>
-        <Pressable onPress={somar}><Text>+</Text></Pressable>
-        <Pressable onPress={subtrair}><Text>-</Text></Pressable>
-        <Pressable onPress={multiplicar}><Text>x</Text></Pressable>
-        <Pressable onPress={dividir}><Text>÷</Text></Pressable>
+        <Pressable style={styles.button} onPress={somar}><Text>+</Text></Pressable>
+        <Pressable style={styles.button} onPress={subtrair}><Text>-</Text></Pressable>
+        <Pressable style={styles.button} onPress={multiplicar}><Text>x</Text></Pressable>
+        <Pressable style={styles.button} onPress={dividir}><Text>÷</Text></Pressable>
       </View>
       <Text>{resultado}</Text>
     </View>
@@ -75,16 +75,27 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '60%',
+    width: '65%',
   },
 
   input:{
-    backgroundColor: '#b5b5b5',
+    backgroundColor: '#d7d95f',
     margin: 10,
     height: 50,
     textAlign: 'center',
     borderRadius: 5,
     width: '30%',
+  },
+
+  button: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    display: 'flex',
+    backgroundColor: '#5f86d9',
+    height: 40,
+    textAlign: 'center',
+    borderRadius: 5,
+    width: 40 ,
   },
 
 
