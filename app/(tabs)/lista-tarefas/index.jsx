@@ -3,16 +3,16 @@ import { useState } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 
 const TAREFAS = [
-    { id: 1, descricao: 'Passear com cachorro', feito: false, date: '15/08/2024' },
-    { id: 2, descricao: 'Dar comida pro cachorro', feito: false, date: '15/08/2024' },
-    { id: 3, descricao: 'Fazer almoço', feito: true, date: '15/08/2024' },
-    { id: 4, descricao: 'Caminhar', feito: true, date: '15/08/2024' },
-    { id: 5, descricao: 'Ler', feito: true, date: '15/08/2024' },
-    { id: 6, descricao: 'Arrumar quarto', feito: true, date: '15/08/2024' },
-    { id: 7, descricao: 'Fazer compras', feito: true, date: '15/08/2024' },
-    { id: 8, descricao: 'Cortar o cabelo', feito: true, date: '15/08/2024' },
-    { id: 9, descricao: 'Estudar', feito: true, date: '15/08/2024' },
-    { id: 10, descricao: 'Fazer deveres', feito: true, date: '15/08/2024' },
+    { id: 1, descricao: 'Passear com cachorro', feito: false, date: '21/08/2024' },
+    { id: 2, descricao: 'Dar comida pro cachorro', feito: false, date: '21/08/2024' },
+    { id: 3, descricao: 'Fazer almoço', feito: true, date: '21/08/2024' },
+    { id: 4, descricao: 'Caminhar', feito: true, date: '21/08/2024' },
+    { id: 5, descricao: 'Ler', feito: true, date: '21/08/2024' },
+    { id: 6, descricao: 'Arrumar quarto', feito: true, date: '21/08/2024' },
+    { id: 7, descricao: 'Fazer compras', feito: true, date: '21/08/2024' },
+    { id: 8, descricao: 'Cortar o cabelo', feito: true, date: '21/08/2024' },
+    { id: 9, descricao: 'Estudar', feito: true, date: '21/08/2024' },
+    { id: 10, descricao: 'Fazer deveres', feito: true, date: '21/08/2024' },
 ]
 
 
@@ -59,19 +59,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     listItem: {
-        fontSize: 18
+        fontSize: 25,
+        color: '#10287d',
     },
     item: {
         paddingBottom: 10,
         paddingTop: 10,
-        borderBottomColor: '#dddddd',
+        borderBottomColor: '#10287d',
         borderBottomWidth: 1,
 
     },
     title: {
-        fontSize: 35,
+        fontSize: 40,
         fontWeight: 'bold',
         marginBottom: 20,
+        color: '#10287d',
+        fontFamily: 'Arial Narrow',
     },
     content: {
         width: '80%',
@@ -85,5 +88,21 @@ const styles = StyleSheet.create({
         height: '90%',
     }
 });
+
+const SplashScreen = function () {
+    return (
+      <View style={styles.container}>
+        <LinearGradient
+          colors={['#bfc7db', '#0231a1']}
+          style={styles.background}
+  
+        />
+        <Image
+          style={styles.logo}
+          source={{ uri: '' }} />
+      </View>
+  
+    )
+  };
 
 export default toDo

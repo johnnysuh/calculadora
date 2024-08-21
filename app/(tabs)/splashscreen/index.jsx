@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 const styles = StyleSheet.create({
   logo: {
     width: 185,
-    height: 100,
+    height: 250,
   },
   container: {
     width: '100%',
@@ -27,14 +27,13 @@ const SplashScreen = function () {
   return (
     <View style={styles.container}>
       <LinearGradient
-        // Background Linear Gradient
-        colors={['#050627', '#1f469a']}
+        colors={['#bfc7db', '#0231a1']}
         style={styles.background}
 
       />
       <Image
         style={styles.logo}
-        source={{ uri: 'wekimeki.png' }} />
+        source={{ uri: 'https://artms-strategy.com/_next/static/media/artms-logo.6b526fa2.png' }} />
     </View>
 
   )
