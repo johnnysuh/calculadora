@@ -1,44 +1,39 @@
-import { useFonts } from 'expo-font';
 import React from 'react'
-import { Text, View, StyleSheet, BackHandler, Pressable, TextInput } from 'react-native'
+import { Image, ImageBackground, Text, View, StyleSheet, BackHandler, Pressable, TextInput } from 'react-native'
 
 const calculadoraAtualizada = function () {
-  const [number1, setNumber1] = React.useState('');
-  const [operacao, setOperacao] = React.useState('');
-  const [displayNumber, setDisplayNumber] = React.useState('');
-  const [calculado, setCalculado] = React.useState(false)
+  const [primeiroNumero, setPrimeiroNumero] = React.useState('')
+  const [operation, setOperation] = React.useState('')
+  const [displayNumber, setDisplayNumber] = React.useState('')
+  const [calcularValor, setCalcularValor] = React.useState(false)
 
-  const [loaded, error] = useFonts({
-    'SevenSeg': require('./../../assets/fonts/SevenSeg.ttf'),
-  });
 
-  //Operações
   const somar = function () {
-    if (number1 != '')
-      setDisplayNumber(parseFloat(number1) + parseFloat(displayNumber))
+    if (primeiroNumero != '')
+      setDisplayNumber(parseFloat(primeiroNumero) + parseFloat(displayNumber))
 
   }
   const subtrair = function () {
-    if (number1 != '')
-      setDisplayNumber(number1 - displayNumber)
+    if (primeiroNumero != '')
+      setDisplayNumber(primeiroNumero - displayNumber)
 
   }
   const dividir = function () {
     if (parseFloat(displayNumber) === 0)
       setDisplayNumber('ERROR - DIV 0')
-    else if (number1 != '')
-      setDisplayNumber(number1 / displayNumber)
+    else if (primeiroNumero != '')
+      setDisplayNumber(primeiroNumero / displayNumber)
 
   }
   const multiplicar = function () {
-    if (number1 != '')
-      setDisplayNumber(number1 * displayNumber)
+    if (primeiroNumero != '')
+      setDisplayNumber(primeiroNumero * displayNumber)
 
   }
 
   const calcular = function () {
-    if (!calculado) {
-      switch (operacao) {
+    if (!calcularValor) {
+      switch (operation) {
         case 'soma':
           somar()
           break
@@ -53,121 +48,152 @@ const calculadoraAtualizada = function () {
           break
       }
     }
-    setCalculado(true)
+    setCalcularValor(true)
   }
 
-  const concatenarDigito = function (digito) {
-    if(calculado){
-      setCalculado(false)
+  const addDigit = function (digit) {
+    if (calcularValor) {
+      setCalcularValor(false)
     }
-    if (digito != '.') {
-      setDisplayNumber(displayNumber + digito)
+    if (digit != '.') {
+      setDisplayNumber(displayNumber + digit)
     } else if (!displayNumber.includes('.')) {
-      setDisplayNumber(displayNumber + digito)
+      setDisplayNumber(displayNumber + digit)
     }
 
   }
 
-  const limpar = function () {
+  const clean = function () {
     setDisplayNumber('')
-    setNumber1('')
-    setCalculado(false)
+    setPrimeiroNumero('')
+    setCalcularValor(false)
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Calculadora</Text>
+    <View style={styles.main}>
+      
+      <ImageBackground source={{uri: "https://pbs.twimg.com/media/FhkHbDaaEAAwT3K.jpg:large"}} resizeMode="cover" style={{height: '100%', width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+      <Text style={styles.title}>✩°｡⋆Calculadora estilizada⋆｡°✩</Text>
       <View style={styles.display}>
-        <Text style={styles.text}>{displayNumber}</Text>
+        <Text style={styles.displayText}>{displayNumber}</Text>
       </View>
-      <View style={styles.buttonGroup}>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('9')}><Text>9</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('8')}><Text>8</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('7')}><Text>7</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => { setOperacao('soma'), setNumber1(displayNumber), setDisplayNumber('') }}><Text>+</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('6')}><Text>6</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('5')}><Text>5</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('4')}><Text>4</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => { setOperacao('subtracao'), setNumber1(displayNumber), setDisplayNumber('') }}><Text>-</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('3')}><Text>3</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('2')}><Text>2</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('1')}><Text>1</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => { setOperacao('multiplicacao'), setNumber1(displayNumber), setDisplayNumber('') }}><Text>*</Text></Pressable>
+
+    <View style={styles.buttons}>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('9')}><Text>9</Text></Pressable>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('8')}><Text>8</Text></Pressable>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('7')}><Text>7</Text></Pressable>
+        <Pressable style={styles.buttonOperator} onPress={() => { setOperation('soma'), setPrimeiroNumero(displayNumber), setDisplayNumber('') }}><Text>+</Text></Pressable>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('6')}><Text>6</Text></Pressable>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('5')}><Text>5</Text></Pressable>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('4')}><Text>4</Text></Pressable>
+        <Pressable style={styles.buttonOperator} onPress={() => { setOperation('subtracao'), setPrimeiroNumero(displayNumber), setDisplayNumber('') }}><Text>-</Text></Pressable>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('3')}><Text>3</Text></Pressable>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('2')}><Text>2</Text></Pressable>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('1')}><Text>1</Text></Pressable>
+        <Pressable style={styles.buttonOperator} onPress={() => { setOperation('multiplicacao'), setPrimeiroNumero(displayNumber), setDisplayNumber('') }}><Text>*</Text></Pressable>
         <Pressable style={styles.button} onPress={() => calcular()}><Text>=</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('0')}><Text>0</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => concatenarDigito('.')}><Text>.</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => { setOperacao('divisao'), setNumber1(displayNumber), setDisplayNumber('') }}><Text>/</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => limpar()}><Text>C</Text></Pressable>
-        <Pressable style={styles.button} onPress={() => setDisplayNumber('')}><Text>CE</Text></Pressable>
-
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('0')}><Text>0</Text></Pressable>
+        <Pressable style={styles.buttonDigit} onPress={() => addDigit('.')}><Text>.</Text></Pressable>
+        <Pressable style={styles.buttonOperator} onPress={() => { setOperation('divisao'), setPrimeiroNumero(displayNumber), setDisplayNumber('') }}><Text>/</Text></Pressable>
+        <Pressable style={styles.buttonClear} onPress={() => clean()}><Text>C</Text></Pressable>
+        <Pressable style={styles.buttonClear} onPress={() => setDisplayNumber('')}><Text>CE</Text></Pressable>
       </View>
-
+      </ImageBackground>
     </View>
   )
 };
 
 const styles = StyleSheet.create({
-  container: {
+  main: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     height: '100%',
-    gap: 20,
+    width: '100%',
+    gap: 20
   },
+
+  image:{
+    justifyContent: 'center',
+  },
+
   display: {
-    backgroundColor: '#b5b5b5',
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: '#001d6e',
     margin: 10,
     height: 50,
     textAlign: 'center',
     borderRadius: 5,
-    width: '60%',
+    width: '80%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-end',
     padding: 10,
   },
-  text:{
-    fontFamily: 'SevenSeg',
-    fontSize: 30
+
+  displayText: {
+    fontSize: 25,
   },
-  inputGroup: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   title: {
-    fontSize: 40,
+    fontSize: 25,
     textAlign: 'center',
+    color: '#001d6e',
+    fontWeight: 'bold',
   },
-  buttonGroup: {
+
+  buttons: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    width: '60%',
+    width: '70%',
     flexWrap: 'wrap',
     rowGap: 15,
   },
 
-  input: {
-    backgroundColor: '#b5b5b5',
-    margin: 10,
-    height: 50,
-    textAlign: 'center',
-    borderRadius: 5,
-    width: '30%',
-  },
-
   button: {
-    width: 50,
-    height: 50,
+    width: 58,
+    height: 58,
     borderRadius: 50,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#aaaaff',
+    backgroundColor: '#fbb1bd',
+  },
+
+  buttonDigit: {
+    width: 58,
+    height: 58,
+    borderRadius: 50,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fae0e4',
+  },
+
+  buttonOperator: {
+    width: 58,
+    height: 58,
+    borderRadius: 50,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fbb1bd',
+  },
+
+  buttonClear: {
+    width: 58,
+    height: 58,
+    borderRadius: 50,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ff85a1',
   }
 
 });
