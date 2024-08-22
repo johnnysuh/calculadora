@@ -4,8 +4,8 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 const styles = StyleSheet.create({
   logo: {
-    width: 185,
-    height: 250,
+    width: 300,
+    height: 100,
   },
   container: {
     width: '100%',
