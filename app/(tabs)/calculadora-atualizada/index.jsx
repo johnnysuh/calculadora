@@ -163,7 +163,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fbb1bd',
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: '#0069d1',
   },
 
   buttonDigit: {
@@ -173,7 +176,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fae0e4',
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: '#00fff7',
   },
 
   buttonOperator: {
@@ -183,7 +189,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fbb1bd',
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: '#0069d1',
   },
 
   buttonClear: {
@@ -193,7 +202,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#ff85a1',
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderRadius: 10,
+    borderColor: '#d2f4fa',
   }
 
 });
