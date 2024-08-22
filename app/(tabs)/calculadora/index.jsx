@@ -1,8 +1,7 @@
 import React from 'react'
 import { Text, View, StyleSheet, BackHandler, Pressable, TextInput } from 'react-native'
-import { LinearGradient } from 'expo-linear-gradient'
 
-const PrimeiraPagina = function () {
+const calculadoraBasica = function () {
   const [number1, setNumber1] = React.useState('');
   const [number2, setNumber2] = React.useState('');
   const [resultado, setResultado] = React.useState('');
@@ -101,4 +100,4 @@ const styles = StyleSheet.create({
 
 });
 
-export default PrimeiraPagina;
+export default calculadoraBasica;
