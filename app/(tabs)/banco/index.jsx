@@ -12,7 +12,9 @@ const style = StyleSheet.create({
         alignItems: 'center'
     },
     botao:{
-        backgroundColor: '#ff55ff'
+        backgroundColor: '#ff0000',
+        borderRadius: 10,
+
     },
 
 })
@@ -56,7 +58,7 @@ export default telaBanco = () => {
         <View>
             <Text>Inserir botões aqui</Text>
             <Pressable
-            onPress={}
+            onPress={()}
             style={style.botao}
             >
                 
