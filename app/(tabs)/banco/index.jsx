@@ -13,8 +13,14 @@ const style = StyleSheet.create({
     },
     botao:{
         backgroundColor: '#ff0000',
-        borderRadius: 10,
-
+        borderRadius: 20,
+        height: 40,
+        width: 100,
+        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        
     },
 
 })
@@ -28,7 +34,7 @@ export default telaBanco = () => {
 
     const depositar = function () {
         // verificações
-        setSaldo(saldo + valor)
+        setSaldo(Number(saldo) + Number(valor))
     }
 
     const sacar = () => {
@@ -46,22 +52,28 @@ export default telaBanco = () => {
             />
         </View>
         <View>
-            <Text>Saldo atual na conta:</Text>{saldo}
+            <Text>Saldo atual na conta: {saldo}</Text>
         </View>
         <View>
             <TextInput
-                onChangeText={setvalor}
+                onChangeText={setValor}
                 value={valor}
                 placeholder='Insira o valor aqui'
+                keyboardType='numeric'
             />
         </View>
         <View>
-            <Text>Inserir botões aqui</Text>
             <Pressable
-            onPress={()}
             style={style.botao}
+            onPress={sacar}
             >
-                
+                <Text>Sacar</Text>
+            </Pressable>
+            <Pressable
+            style={style.botao}
+            onPress={depositar}
+            >
+                <Text>Depositar</Text>
             </Pressable>
         </View>
 
